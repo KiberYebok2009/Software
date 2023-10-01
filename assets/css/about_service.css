@@ -1,20 +1,21 @@
-.hover {
+.hover-container {
   overflow: hidden;
   position: relative;
   padding-bottom: 60%;
 }
 
-.hover-overlay {
+.hover-container * {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  bottom: 0;
   z-index: 90;
   transition: all 0.4s;
 }
 
-.hover img {
+.hover-container img {
   width: 100%;
   position: absolute;
   top: 0;
@@ -22,22 +23,19 @@
   transition: all 0.3s;
 }
 
-.hover-content {
+.hover-container .hover-content {
   position: relative;
   z-index: 99;
 }
 
-
 /* DEMO 1 ============================== */
-.hover-1 img {
+.hover-container .hover-1 img {
   width: 105%;
-  position: absolute;
-  top: 0;
   left: -5%;
-  transition: all 0.3s;
 }
 
-.hover-1-content {
+.hover-container .hover-1 *,
+.hover-container .hover-1-description {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -45,29 +43,36 @@
   transition: all 0.4s;
 }
 
-.hover-1 .hover-overlay {
+.hover-container .hover-1 * {
   background: rgba(0, 0, 0, 0.5);
 }
 
-.hover-1-description {
+.hover-container .hover-1-description {
   transform: translateY(0.5rem);
-  transition: all 0.4s;
   opacity: 0;
 }
 
-.hover-1:hover .hover-1-content {
+.hover-container .hover-1:hover * {
   bottom: 2rem;
 }
 
-.hover-1:hover .hover-1-description {
+.hover-container .hover-1:hover .hover-1-description {
   opacity: 1;
   transform: none;
 }
 
-.hover-1:hover img {
+.hover-container .hover-1:hover img,
+.hover-container .hover-1:hover * {
   left: 0;
-}
-
-.hover-1:hover .hover-overlay {
   opacity: 0;
 }
+/* 1. Вместо использования полного селектора .hover для каждого класса, можно задать общий класс родительского контейнера, например .hover-container, и применять его ко всем элементам.
+            Выполнено
+2. Определение transition свойств на каждом элементе можно объединить в одно правило, чтобы сократить количество кода.
+            Выполнено
+3. Если класс hover-overlay должен быть применен ко всем элементам, можно использовать универсальный селектор * вместо .hover-overlay.
+            Выполнено
+
+4. Если одинаковые правила применяются к нескольким классам, их можно группировать, чтобы сделать код более читабельным. 
+            Выполнено
+*/
